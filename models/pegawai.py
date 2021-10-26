@@ -26,10 +26,10 @@ class Pegawai(models.Model):
         else:
             if vals.get('is_internal') :
                 if vals.get('kode_pegawai',_('New')) == _('New'):
-                    vals['kode_pegawai'] = self.env['ir.sequence'].next_by_code('pegawai.internal') or _('New')
+                    vals['kode_pegawai'] = self.env['ir.sequence'].next_by_code('myoutsource.pegawai.internal') or _('New')
             elif vals.get('is_outsource'):
                 if vals.get('kode_pegawai',_('New')) == _('New'):
-                    vals['kode_pegawai'] = self.env['ir.sequence'].next_by_code('pegawai.outsource') or _('New')
+                    vals['kode_pegawai'] = self.env['ir.sequence'].next_by_code('myoutsource.pegawai.outsource') or _('New')
             else:
                 raise ValidationError ("Pilih Salah Satu Jenis Pegawai !")
         res = super(Pegawai,self).create(vals)
@@ -37,7 +37,7 @@ class Pegawai(models.Model):
 
 class PegawaiOutsource(models.Model):
     _description = 'Pegawai Outsource dari My Outsource'
-    _inheritance = 'myoutsource.pegawai'
+    _inherit = 'myoutsource.pegawai'
 
     status_contract = fields.Selection([
         ('waiting', 'Waiting'),
@@ -47,5 +47,5 @@ class PegawaiOutsource(models.Model):
         ('quit', 'Quit'),
     ], string='Status Contract')
     mitra_id = fields.Many2one('myoutsource.mitra', string='Mitra')
-    supervisor_id = fields.Many2one('comodel_name', string='Supervisor')
+    supervisor_id = fields.Many2one('myoutsource.supervisor', string='Supervisor')
     

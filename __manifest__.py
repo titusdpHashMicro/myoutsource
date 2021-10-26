@@ -18,7 +18,7 @@
     # for the full list
     'category': 'Administration',
     'version': '0.1',
-    'aplication': True,
+    'application': True,
 
     # any module necessary for this one to work correctly
     'depends': ['base'],
@@ -27,8 +27,9 @@
     'data': [
         # 'security/ir.model.access.csv',
         'data/data.xml',
-        'views/views.xml',
-        'views/templates.xml',
+        'views/pegawai_views.xml',
+        'views/supervisor_views.xml',
+        'views/mitra_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

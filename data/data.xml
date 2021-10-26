@@ -3,30 +3,30 @@
 
     <data>
     
-        <record id="seq_pegawai_internal" model="myoutsource.pegawai">
+        <record id="seq_pegawai_internal" model="ir.sequence">
             <field name="name">Pegawai Internal Sequence</field>
-            <field name="code">pegawai.internal</field>
+            <field name="code">myoutsource.pegawai.internal</field>
             <field name="prefix">PI</field>
             <field name="padding">4</field>
         </record>
 
-        <record id="seq_pegawai_outsource" model="myoutsource.pegawai">
+        <record id="seq_pegawai_outsource" model="ir.sequence">
             <field name="name">Pegawai Outsource Sequence</field>
-            <field name="code">pegawai.outsource</field>
+            <field name="code">myoutsource.pegawai.outsource</field>
             <field name="prefix">PO</field>
             <field name="padding">4</field>
         </record>
 
-        <record id="seq_mitra" model="myoutsource.mitra">
+        <record id="seq_mitra" model="ir.sequence">
             <field name="name">Mitra Sequence</field>
-            <field name="code">kode.mitra</field>
+            <field name="code">myoutsource.mitra</field>
             <field name="prefix">M</field>
             <field name="padding">4</field>
         </record>
 
-        <record id="seq_supervisor" model="myoutsource.supervisor">
+        <record id="seq_supervisor" model="ir.sequence">
             <field name="name">Supervisor Sequence</field>
-            <field name="code">kode.supervisor</field>
+            <field name="code">myoutsource.supervisor</field>
             <field name="prefix">S</field>
             <field name="padding">4</field>
         </record>

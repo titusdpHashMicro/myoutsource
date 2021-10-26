@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="supervisor_action" model="ir.actions.act_window">
+        <field name="name">Supervisor</field>
+        <field name="res_model">myoutsource.supervisor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Supervisor
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+    id="supervisor_menu_root"
+    name="Supervisor"
+    parent="myoutsource_menu_root"
+    sequence="10"/>
+  
+    <menuitem
+    id="supervisor_menu"
+    name="Supervisor"
+    action="supervisor_action"
+    parent="supervisor_menu_root"
+    sequence="10"/>
+
+</odoo>
