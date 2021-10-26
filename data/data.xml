@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <record id="seq_pegawai_internal" model="myoutsource.pegawai">
+            <field name="name">Pegawai Internal Sequence</field>
+            <field name="code">pegawai.internal</field>
+            <field name="prefix">PI</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="seq_pegawai_outsource" model="myoutsource.pegawai">
+            <field name="name">Pegawai Outsource Sequence</field>
+            <field name="code">pegawai.outsource</field>
+            <field name="prefix">PO</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="seq_mitra" model="myoutsource.mitra">
+            <field name="name">Mitra Sequence</field>
+            <field name="code">kode.mitra</field>
+            <field name="prefix">M</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="seq_supervisor" model="myoutsource.supervisor">
+            <field name="name">Supervisor Sequence</field>
+            <field name="code">kode.supervisor</field>
+            <field name="prefix">S</field>
+            <field name="padding">4</field>
+        </record>
+
+    </data>
+    
+
+</odoo>
