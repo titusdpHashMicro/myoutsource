@@ -27,9 +27,12 @@
     'data': [
         # 'security/ir.model.access.csv',
         'data/data.xml',
+        # 'wizard/create_spv_emp.xml',
         'views/pegawai_views.xml',
         'views/supervisor_views.xml',
         'views/mitra_views.xml',
+        'views/fasilitas_views.xml',
+        # 'views/peminjaman_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

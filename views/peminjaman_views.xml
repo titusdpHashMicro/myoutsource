@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="peminjaman_view_form" model="ir.ui.view">
+        <field name="name">peminjaman.view.form</field>
+        <field name="model">myoutsource.peminjaman</field>
+        <field name="arch" type="xml">
+        <form string="">
+            <header>
+                <field name="status_pinjam" widget="statusbar"/>
+            </header>
+            <sheet>
+                <div class='oe_title'>
+                    <h1>
+                    <field name="name" readonly='1'/>
+                    </h1>
+                </div>
+                <group>
+                    <group name="Detail Waktu">
+                        <separator string="Data Peminjaman"/>
+                        <field name="tanggal_pinjam" />
+                        <field name="tanggal_kembali" />
+                    </group>
+                    <group name="Peminjam">
+                        <separator string="Detail Pinjaman"/>
+                        <field name="peminjam_id" />
+                        <field name="fasilitas_id" />
+                    </group>
+                </group>
+            </sheet>
+        </form>
+        </field>
+    </record>
+
+    <record id="peminjaman_view_tree" model="ir.ui.view">
+        <field name="name">peminjaman.view.tree</field>
+        <field name="model">myoutsource.peminjaman</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="peminjam_id" />
+                <field name="fasilitas_id" />
+                <field name="tanggal_pinjam" />
+                <field name="tanggal_kembali" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="peminjaman_action" model="ir.actions.act_window">
+        <field name="name">Peminjaman</field>
+        <field name="res_model">myoutsource.peminjaman</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Peminjaman
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+    id="peminjaman_menu_root"
+    name="Peminjaman"
+    parent="myoutsource_menu_root"
+    sequence="50"/>
+  
+    <menuitem
+    id="peminjaman_menu"
+    name="Peminjaman"
+    action="peminjaman_action"
+    parent="peminjaman_menu_root"
+    sequence="10"/>
+
+</odoo>

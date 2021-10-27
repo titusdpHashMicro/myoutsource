@@ -18,9 +18,10 @@ class Pegawai(models.Model):
     gaji = fields.Integer(string="Gaji")
     is_internal = fields.Boolean(string='Pegawai Internal')
     is_outsource = fields.Boolean(string='Pegawai Outsource')
+    pinjam_ids = fields.One2many('myoutsource.peminjaman', 'peminjam_id', string='Fasilitas Yang Dipinjam')
 
     @api.model
-    def kode_pegawai_internal(self,vals):
+    def create(self,vals):
         if vals.get('is_internal') and vals.get('is_outsource') :
             raise ValidationError ("Tidak Boleh Memilih Lebih Satu Jenis Pegawai !")
         else:
@@ -46,6 +47,6 @@ class PegawaiOutsource(models.Model):
         ('done', 'Done'),
         ('quit', 'Quit'),
     ], string='Status Contract')
-    mitra_id = fields.Many2one('myoutsource.mitra', string='Mitra')
-    supervisor_id = fields.Many2one('myoutsource.supervisor', string='Supervisor')
+    mitra_id = fields.Many2one('myoutsource.mitra', string='Mitra', delegate=True)
+    supervisor_id = fields.Many2one('myoutsource.supervisor', string='Supervisor', delegate=True)
     

@@ -2,3 +2,6 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_myoutsource_pegawai,access.myoutsource.pegawai,model_myoutsource_pegawai,,1,1,1,1
 access_myoutsource_mitra,access.myoutsource.mitra,model_myoutsource_mitra,,1,1,1,1
 access_myoutsource_supervisor,access.myoutsource.supervisor,model_myoutsource_supervisor,,1,1,1,1
+access_create_spv_emp, access.create.spv.emp,model_create_spv_emp,,1,1,1,1
+access_myoutsource_peminjaman, access.myoutsource.peminjaman,model_myoutsource_peminjaman,,1,1,1,1
+access_myoutsource_fasilitas, access.myoutsource.fasilitas,model_myoutsource_fasilitas,,1,1,1,1

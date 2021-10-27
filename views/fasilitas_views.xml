@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="fasilitas_view_form" model="ir.ui.view">
+        <field name="name">fasilitas.view.form</field>
+        <field name="model">myoutsource.fasilitas</field>
+        <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <div class='oe_title'>
+                    <h1>
+                    <field name="kode_fasilitas" readonly='1'/>
+                    </h1>
+                </div>
+                <group>
+                    <group name="Deskripsi">
+                        <separator string="Data Fasilitas"/>
+                        <field name="name" />
+                        <field name="deskripsi" />
+                    </group>
+                    <group name="Stok">
+                        <separator string="Stok"/>
+                        <field name="stok" />
+                    </group>
+                </group>
+                <notebook>
+                    <page name="peminjaman_ids" string="Peminjaman">
+                        <field name="peminjaman_ids" domain="[('status_pinjam','=','on progress')]">
+                            <tree>
+                                <field name="name" />
+                                <field name="peminjam_id" />
+                                <field name="tanggal_pinjam" />
+                                <field name="tanggal_pinjam" />
+                                <field name="status_pinjam" invisible="1"/>
+                            </tree>
+                        </field>    
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+        </field>
+    </record>
+
+    <record id="fasilitas_view_tree" model="ir.ui.view">
+        <field name="name">fasilitas.view.tree</field>
+        <field name="model">myoutsource.fasilitas</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="stok" />
+                <field name="deskripsi" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="fasilitas_action" model="ir.actions.act_window">
+        <field name="name">Fasilitas</field>
+        <field name="res_model">myoutsource.fasilitas</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Fasilitas
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+    id="fasilitas_menu_root"
+    name="Fasilitas"
+    parent="myoutsource_menu_root"
+    sequence="40"/>
+  
+    <menuitem
+    id="fasilitas_menu"
+    name="Fasilitas"
+    action="fasilitas_action"
+    parent="fasilitas_menu_root"
+    sequence="10"/>
+
+</odoo>

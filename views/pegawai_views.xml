@@ -11,8 +11,8 @@
               <field name="kode_pegawai" readonly='1'/>
             </h1>
           </div>
-          <group colspan='4'>
-            <group colspan='2'>
+          <group>
+            <group name="Data">
               <separator string="Data Diri"/>
               <field name="name" />
               <field name="nik" />
@@ -21,12 +21,31 @@
               <field name="role" />
               <field name="gaji" />
             </group>
-            <group colspan='2'>
+            <group name="Kontak dan Perusahaan">
               <separator string="Kontak"/>
               <field name="email" />
               <field name="no_telp" />
+              <separator string="Perusahaan Mitra" attrs="{'invisible': [('is_internal', '=', True)]}"/>
+              <field name="mitra_id" attrs="{'invisible': [('is_internal', '=', True)]}"/>
+              <field name="supervisor_id" attrs="{'invisible': [('mitra_id', '=', False)]}"/>
+              
+              <field name="is_internal" invisible="context.get('hide_is')"/>
+              <field name="is_outsource" invisible="context.get('hide_is')"/>
             </group>
           </group>
+          <notebook attrs="{'invisible': [('is_outsource', '=', True)]}">
+            <page name="pinjam_ids" string="Fasilitas Dipinjam">
+              <field name="pinjam_ids">
+                <tree editable="bottom">
+                    <field name="name" />
+                    <field name="fasilitas_id" />
+                    <field name="tanggal_pinjam" />
+                    <field name="tanggal_kembali" />
+                    <field name="status_pinjam" />
+                </tree>
+              </field>
+            </page>
+          </notebook>
         </sheet>
       </form>
     </field>
@@ -35,8 +54,8 @@
     <field name="name">Pegawai Internal</field>
     <field name="res_model">myoutsource.pegawai</field>
     <field name="view_mode">tree,form</field>
-    <field name="domain">[]</field>
-    <field name="context">{}</field>
+    <field name="domain">[('is_internal','=','True')]</field>
+    <field name="context">{'default_is_internal':'True','hide_is':1}</field>
     <field name="help" type="html">
         <p class="o_view_nocontent_smiling_face">
                 Create a new Pegawai Internal
@@ -48,8 +67,8 @@
     <field name="name">Pegawai Outsource</field>
     <field name="res_model">myoutsource.pegawai</field>
     <field name="view_mode">tree,form</field>
-    <field name="domain">[]</field>
-    <field name="context">{}</field>
+    <field name="domain">[('is_outsource','=','True')]</field>
+    <field name="context">{'default_is_outsource':'True','hide_is':1}</field>
     <field name="help" type="html">
         <p class="o_view_nocontent_smiling_face">
                 Create a new Pegawai Outsource
@@ -74,12 +93,13 @@
     action="pegawai_outsource_action"
     parent="pegawai_menu_root"
     sequence="10"/>
+
   
   <menuitem
     id="internal_menu"
     name="Pegawai Internal"
     action="pegawai_internal_action"
     parent="pegawai_menu_root"
-    sequence="10"/>
+    sequence="30"/>
 
 </odoo>

@@ -31,6 +31,20 @@
             <field name="padding">4</field>
         </record>
 
+        <record id="seq_fasilitas" model="ir.sequence">
+            <field name="name">Fasilitas Sequence</field>
+            <field name="code">myoutsource.fasilitas</field>
+            <field name="prefix">F</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="seq_peminjaman" model="ir.sequence">
+            <field name="name">Peminjaman Sequence</field>
+            <field name="code">myoutsource.peminjaman</field>
+            <field name="prefix">PF</field>
+            <field name="padding">4</field>
+        </record>
+
     </data>
     
 

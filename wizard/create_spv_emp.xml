@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="create_spv_emp_view_form" model="ir.ui.view">
+        <field name="name">create.spv.emp.view.form</field>
+        <field name="model">create.spv.emp</field>
+        <field name="arch" type="xml">
+            <form string="Assign Pegawai to SPV">
+                <group>
+                    <field name="name" />
+                </group>
+                <footer>
+                    <button string="Create" class="btn-primary" name="create_spv_emp_action" type="object"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="create_spv_emp_action" model="ir.actions.act_window">
+        <field name="name">Assign Pegawai to SPV</field>
+        <field name="res_model">create.spv.emp</field>
+        <field name="view_id" ref="create_spv_emp_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

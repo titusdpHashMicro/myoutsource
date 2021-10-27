@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    
+    <record id="supervisor_view_form" model="ir.ui.view">
+    <field name="name">supervisor.view.form</field>
+    <field name="model">myoutsource.supervisor</field>
+    <field name="arch" type="xml">
+      <form string="">
+        <sheet>
+          <div class='oe_title'>
+            <h1>
+              <field name="kode_supervisor" readonly='1'/>
+            </h1>
+          </div>
+          <group>
+            <group name="Deskripsi">
+              <separator string="Data Diri"/>
+              <field name="name" />
+              <field name="nik" />
+            </group>
+            <group name="Kontak">
+              <separator string="Kontak"/>
+              <field name="email" />
+              <field name="no_telp" />
+              <separator string="Perusahaan"/>
+              <field name="company_id" />
+              <field name="total_pegawai" />
+            </group>
+          </group>
+          <notebook>
+            <page name="pegawai_ids" string="Pegawai Dalam Pengawasan">
+              <field name="pegawai_ids">
+                <tree editable="bottom">
+                    <field name="name" />
+                    <field name="nik" />
+                    <field name="role" />
+                    <field name="no_telp" />
+                </tree>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
     <record id="supervisor_action" model="ir.actions.act_window">
         <field name="name">Supervisor</field>
         <field name="res_model">myoutsource.supervisor</field>

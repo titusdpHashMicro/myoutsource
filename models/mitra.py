@@ -18,7 +18,7 @@ class Mitra(models.Model):
     supervisor_ids = fields.One2many('myoutsource.supervisor', 'company_id', string='Supervisor')
 
     @api.model
-    def generate_kode_mitra(self,vals):
+    def create(self,vals):
         if vals.get('kode_mitra',_('New')) == _('New'):
             vals['kode_mitra'] = self.env['ir.sequence'].next_by_code('myoutsource.mitra') or _('New')
         res = super(Mitra,self).create(vals)
