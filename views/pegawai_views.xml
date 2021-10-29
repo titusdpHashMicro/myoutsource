@@ -37,8 +37,8 @@
               <field name="mitra_id" attrs="{'invisible': [('is_internal', '=', True)]}"/>
               <field name="supervisor_id" attrs="{'invisible': [('mitra_id', '=', False)]}"/>
               
-              <field name="is_internal" />
-              <field name="is_outsource" />
+              <field name="is_internal" invisible="context.get('hide_is')"/>
+              <field name="is_outsource" invisible="context.get('hide_is')"/>
             </group>
           </group>
           <notebook attrs="{'invisible': [('is_outsource', '=', True)]}">
@@ -73,8 +73,8 @@
         <field name="kode_pegawai" />
         <field name="role" />
         <field name="gaji" />
-        <field name="mitra_id" attrs="{'invisible': [('is_internal', '=', True)]}"/>
-        <field name="supervisor_id" attrs="{'invisible': [('is_internal', '=', True)]}"/>
+        <field name="mitra_id" invisible="context.get('gaji_internal')"/>
+        <field name="supervisor_id" invisible="context.get('gaji_internal')"/>
         <field name="is_internal" invisible='1' />
       </tree>
     </field>

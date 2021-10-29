@@ -6,6 +6,7 @@ class Peminjaman(models.Model):
     _name = 'myoutsource.peminjaman'
     _description = 'Peminjaman Fasilitas dari pegawai internal My Outsource'
     _inherit =['mail.thread','mail.activity.mixin']
+    _order = 'state'
 
     name = fields.Char(string='Kode Peminjaman', required=True, copy=False, readonly=True, default=lambda self: _('New'))
     tanggal_pinjam = fields.Date(string="Tanggal Pinjam", tracking=True)
