@@ -21,7 +21,7 @@
     'application': True,
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','mail'],
 
     # always loaded
     'data': [
@@ -32,7 +32,9 @@
         'views/supervisor_views.xml',
         'views/mitra_views.xml',
         'views/fasilitas_views.xml',
-        # 'views/peminjaman_views.xml',
+        'views/peminjaman_views.xml',
+        'report/mitradatagaji.xml',
+        'report/report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

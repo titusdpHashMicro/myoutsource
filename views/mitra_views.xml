@@ -18,6 +18,8 @@
               <field name="name" />
               <field name="alamat" />
               <field name="deskripsi" />
+              <separator string="Total Pegawai"/>
+              <field name="total_poutsource" />
             </group>
             <group name="Kontak">
               <separator string="Kontak"/>
@@ -29,12 +31,13 @@
           </group>
           <notebook>
             <page name="poutsource_ids" string="Pegawai Outsource">
-              <field name="poutsource_ids">
+              <field name="poutsource_ids" domain="[('state','=','on work')]">
                 <tree editable="bottom">
-                  <field name="name" />
+                  <field name="name"/>
                   <field name="nik" />
                   <field name="role" />
                   <field name="gaji" />
+                  <field name="state" />
                 </tree>
               </field>
             </page>
@@ -50,6 +53,19 @@
           </notebook>
         </sheet>
       </form>
+    </field>
+  </record>
+
+  <record id="mitra_view_tree" model="ir.ui.view">
+    <field name="name">mitra.view.tree</field>
+    <field name="model">myoutsource.mitra</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name" />
+        <field name="alamat" />
+        <field name="total_poutsource" />
+        <field name="total_gaji" />
+      </tree>
     </field>
   </record>
 

@@ -6,7 +6,10 @@
         <field name="arch" type="xml">
         <form string="">
             <header>
-                <field name="status_pinjam" widget="statusbar"/>
+                <button id='button_draft' string="Draft" name="set_to_draft" type="object" class="btn-primary" states="done" />
+                <button id='button_onprogress' string="On Progress" name="set_to_onprogress" type="object" class="btn-primary" states="draft"/>
+                <button id='button_done' string="Done" name="set_to_done" type="object" class="btn-primary" states="on progress"/>
+                <field name="state" widget="statusbar"/>
             </header>
             <sheet>
                 <div class='oe_title'>
@@ -27,6 +30,11 @@
                     </group>
                 </group>
             </sheet>
+            <div class="oe_chatter">
+                <field name="message_follower_ids"/>
+                <field name="activity_ids"/>
+                <field name="message_ids"/>
+            </div>
         </form>
         </field>
     </record>
@@ -37,6 +45,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
+                <field name="state" />
                 <field name="peminjam_id" />
                 <field name="fasilitas_id" />
                 <field name="tanggal_pinjam" />

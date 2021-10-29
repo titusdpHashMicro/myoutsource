@@ -5,6 +5,14 @@
     <field name="model">myoutsource.pegawai</field>
     <field name="arch" type="xml">
       <form string="Pegawai Internal">
+        <header>
+            <button id='button_waiting' string="Waiting" name="set_to_draft" type="object" class="btn-primary" states="done,quit" />
+            <button id='button_contract' string="Contract" name="set_to_contract" type="object" class="btn-primary" states="waiting"/>
+            <button id='button_onwork' string="On Work" name="set_to_onwork" type="object" class="btn-primary" states="contract"/>
+            <button id='button_done' string="Done" name="set_to_done" type="object" class="btn-primary" states="on work"/>
+            <button id='button_quit' string="Quit" name="set_to_quit" type="object" class="btn-secondary" states="done,waiting"/>
+            <field name="state" widget="statusbar"/>
+        </header>
         <sheet>
           <div class='oe_title'>
             <h1>
@@ -19,7 +27,7 @@
               <field name="umur" />
               <separator string="Deskripsi"/>
               <field name="role" />
-              <field name="gaji" />
+              <field name="gaji" required="context.get('gaji_internal')"/>
             </group>
             <group name="Kontak dan Perusahaan">
               <separator string="Kontak"/>
@@ -41,21 +49,44 @@
                     <field name="fasilitas_id" />
                     <field name="tanggal_pinjam" />
                     <field name="tanggal_kembali" />
-                    <field name="status_pinjam" />
+                    <field name="state" />
                 </tree>
               </field>
             </page>
           </notebook>
         </sheet>
+        <div class="oe_chatter">
+          <field name="message_follower_ids"/>
+          <field name="activity_ids"/>
+          <field name="message_ids"/>
+        </div>
       </form>
     </field>
   </record>
+  
+  <record id="pegawai_view_tree" model="ir.ui.view">
+    <field name="name">pegawai.view.tree</field>
+    <field name="model">myoutsource.pegawai</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name" />
+        <field name="kode_pegawai" />
+        <field name="role" />
+        <field name="gaji" />
+        <field name="mitra_id" attrs="{'invisible': [('is_internal', '=', True)]}"/>
+        <field name="supervisor_id" attrs="{'invisible': [('is_internal', '=', True)]}"/>
+        <field name="is_internal" invisible='1' />
+      </tree>
+    </field>
+    
+  </record>
+
   <record id="pegawai_internal_action" model="ir.actions.act_window">
     <field name="name">Pegawai Internal</field>
     <field name="res_model">myoutsource.pegawai</field>
     <field name="view_mode">tree,form</field>
     <field name="domain">[('is_internal','=','True')]</field>
-    <field name="context">{'default_is_internal':'True','hide_is':1}</field>
+    <field name="context">{'default_is_internal':'True','hide_is':1,'gaji_internal':1}</field>
     <field name="help" type="html">
         <p class="o_view_nocontent_smiling_face">
                 Create a new Pegawai Internal
