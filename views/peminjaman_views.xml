@@ -80,4 +80,11 @@
     parent="peminjaman_menu_root"
     sequence="10"/>
 
+    <menuitem
+    id="create_peminjaman_menu"
+    name="Create Peminjaman"
+    action="create_peminjaman_action"
+    parent="peminjaman_menu_root"
+    sequence="20"/>
+
 </odoo>

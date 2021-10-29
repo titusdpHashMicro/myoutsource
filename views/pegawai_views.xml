@@ -7,8 +7,8 @@
       <form string="Pegawai Internal">
         <header>
             <button id='button_waiting' string="Waiting" name="set_to_draft" type="object" class="btn-primary" states="done,quit" />
-            <button id='button_contract' string="Contract" name="set_to_contract" type="object" class="btn-primary" states="waiting"/>
-            <button id='button_onwork' string="On Work" name="set_to_onwork" type="object" class="btn-primary" states="contract"/>
+            <button id='button_contract' string="Contract" name="set_to_contract" type="object" class="btn-primary" states="waiting" confirm="Are you sure that you need to Contract ?"/>
+            <button id='button_onwork' string="On Work" name="set_to_onwork" type="object" class="btn-primary" states="contract" confirm="Are you sure that you need to On Work ?"/>
             <button id='button_done' string="Done" name="set_to_done" type="object" class="btn-primary" states="on work"/>
             <button id='button_quit' string="Quit" name="set_to_quit" type="object" class="btn-secondary" states="done,waiting"/>
             <field name="state" widget="statusbar"/>
@@ -37,8 +37,8 @@
               <field name="mitra_id" attrs="{'invisible': [('is_internal', '=', True)]}"/>
               <field name="supervisor_id" attrs="{'invisible': [('mitra_id', '=', False)]}"/>
               
-              <field name="is_internal" invisible="context.get('hide_is')"/>
-              <field name="is_outsource" invisible="context.get('hide_is')"/>
+              <field name="is_internal" />
+              <field name="is_outsource" />
             </group>
           </group>
           <notebook attrs="{'invisible': [('is_outsource', '=', True)]}">

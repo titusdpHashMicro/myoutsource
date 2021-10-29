@@ -25,9 +25,9 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'data/data.xml',
-        # 'wizard/create_spv_emp.xml',
+        'wizard/create_peminjaman.xml',
         'views/pegawai_views.xml',
         'views/supervisor_views.xml',
         'views/mitra_views.xml',
